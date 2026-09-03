@@ -1,0 +1,133 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyM0d35wD2WhLnFXH3/EYbEE",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/Muthuvanesh/data-science/blob/main/Guess%20\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "fQq_FnnZSct7",
+        "outputId": "d8319e20-025d-4677-f936-358f46135b11"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "\tGUESSING GAME\n",
+            "------------------------------\n",
+            "You have 3 attempts to guess the correct number.\n",
+            "Do you want to play the game? (yes/no): yes\n",
+            "\n",
+            "Attempt 1 of 3\n",
+            "Enter a number between 1 and 10: 7\n",
+            "Incorrect guess.\n",
+            "You have 2 attempts left.\n",
+            "\n",
+            "Attempt 2 of 3\n",
+            "Enter a number between 1 and 10: 7\n",
+            "Incorrect guess.\n",
+            "You have 1 attempts left.\n",
+            "\n",
+            "Attempt 3 of 3\n",
+            "Enter a number between 1 and 10: 7\n",
+            "Incorrect guess.\n",
+            "Sorry, you've used all your attempts.\n",
+            "The correct number was: 10\n",
+            "\n",
+            "Do you want to play again? (yes/no): yes\n",
+            "\n",
+            "Attempt 1 of 3\n"
+          ]
+        }
+      ],
+      "source": [
+        "\n",
+        "import random\n",
+        "\n",
+        "\n",
+        "def user_value(attempt):\n",
+        "    print(f\"\\nAttempt {attempt} of 3\")\n",
+        "\n",
+        "    while True:\n",
+        "        value = int(input(\"Enter a number between 1 and 10: \"))\n",
+        "\n",
+        "        if 1 <= value <= 10:\n",
+        "            return value\n",
+        "        else:\n",
+        "            print(\"Please enter a number within the range.\")\n",
+        "\n",
+        "\n",
+        "def computer_value():\n",
+        "    return random.randint(1, 10)\n",
+        "\n",
+        "\n",
+        "def compare_values(user, computer):\n",
+        "    for attempt in range(1, 4):\n",
+        "\n",
+        "        if user == computer:\n",
+        "            print(\"Congratulations! You guessed the correct number.\")\n",
+        "            return True\n",
+        "\n",
+        "        print(\"Incorrect guess.\")\n",
+        "\n",
+        "        if attempt < 3:\n",
+        "            remaining = 3 - attempt\n",
+        "            print(f\"You have {remaining} attempts left.\")\n",
+        "            user = user_value(attempt + 1)\n",
+        "\n",
+        "    print(\"Sorry, you've used all your attempts.\")\n",
+        "    print(\"The correct number was:\", computer)\n",
+        "\n",
+        "    return False\n",
+        "\n",
+        "\n",
+        "print(\"\\tGUESSING GAME\")\n",
+        "print(\"------------------------------\")\n",
+        "print(\"You have 3 attempts to guess the correct number.\")\n",
+        "\n",
+        "continue_game = input(\"Do you want to play the game? (yes/no): \").lower()\n",
+        "\n",
+        "while continue_game == \"yes\":\n",
+        "\n",
+        "    user = user_value(1)\n",
+        "    computer = computer_value()\n",
+        "\n",
+        "    compare_values(user, computer)\n",
+        "\n",
+        "    continue_game = input(\n",
+        "        \"\\nDo you want to play again? (yes/no): \"\n",
+        "    ).lower()\n",
+        "\n",
+        "print(\"Exiting the game. Goodbye!\")"
+      ]
+    }
+  ]
+}
