@@ -1,4 +1,3 @@
-
 import random
 
 
@@ -24,7 +23,7 @@ def compare_values(user, computer):
 
         if user == computer:
             print("Congratulations! You guessed the correct number.")
-            return
+            return True
 
         else:
             print("Incorrect guess.")
@@ -37,34 +36,30 @@ def compare_values(user, computer):
 
     print("Sorry, you've used all your attempts.")
     print("The correct number was:", computer)
-    continue_game=input("Do u want play again (yes/no)"):
-    if input=="yes"
-       compare_values(user,computer)
+
+    return False
+
 
 print("\tGUESSING GAME")
 print("------------------------------")
 print("You have 3 attempts to guess the correct number.")
 
-continue_game = input("Do you want to play the game? (yes/no): ")
 
-if continue_game == "yes":
+while True:
 
-    user = user_value(1)
-    computer = computer_value()
+    continue_game = input("\nDo you want to play the game? (yes/no): ").lower()
 
-    compare_values(user, computer)
-
-else:
-    print("Are you sure you want to exit the game? (yes/no): ")
-    choice = input()
-
-    if choice == "yes":
+    if continue_game == "no":
         print("Exiting the game. Goodbye!")
+        break
 
-    else:
-        print("Starting the game again...")
+    elif continue_game == "yes":
 
+        # Start a new game
         user = user_value(1)
         computer = computer_value()
 
         compare_values(user, computer)
+
+    else:
+        print("Please enter yes or no.")
